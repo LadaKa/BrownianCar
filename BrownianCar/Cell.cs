@@ -4,7 +4,7 @@ namespace BrownianCar
 {
     class Cell
     {
-        private float neighboursProbability;
+        private RationalNumber neighboursProbability;
         private List<Cell> neighbours = new List<Cell>();
         internal int x;
         internal int y;
@@ -22,12 +22,17 @@ namespace BrownianCar
 
         internal void SetNeighboursProbability()
         {
-            neighboursProbability = 1f / neighbours.Count;
+            neighboursProbability = new RationalNumber(1, neighbours.Count);
         }
 
-        internal float GetNeighbourBackwardProbability(Cell neighbour)
+        internal RationalNumber GetNeighboursProbability()
         {
-            return neighbour.neighboursProbability;
+            return neighboursProbability;
+        }
+
+        internal List<Cell> GetNeighbours() 
+        {
+            return neighbours; 
         }
     }
 }

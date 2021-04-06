@@ -4,9 +4,9 @@
     {
         internal int step;
         internal Cell cell;
-        internal float probability;
+        internal RationalNumber probability;
 
-        internal State(int step, Cell cell, float probability)
+        internal State(int step, Cell cell, RationalNumber probability)
         {
             this.step = step;
             this.cell = cell;

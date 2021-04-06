@@ -34,26 +34,31 @@ namespace BrownianCar
             for (var i = 0; i < rows; i++)
                 for (var j = 0; j < columns; j++)
                 {
-                    AddNeighbours(cells[i][j], cells[i][j]);
+                    AddLoop(cells[i][j]);
                 }
 
             // vertical edge
             for (var i = 0; i < rows - 1; i++)
                 for (var j = 0; j < columns; j++)
                 {
-                    AddNeighbours(cells[i][j], cells[i+1][j]);
+                    AddEdge(cells[i][j], cells[i+1][j]);
                 }
 
             // horizontal edge
             for (var i = 0; i < rows; i++)
                 for (var j = 0; j < columns - 1; j++)
                 {
-                    AddNeighbours(cells[i][j], cells[i][j+1]);
+                    AddEdge(cells[i][j], cells[i][j+1]);
                 }
 
         }
 
-        private void AddNeighbours(Cell neighbour_1, Cell neighbour_2)
+        private void AddLoop(Cell cell)
+        {
+            cell.AddNeighbour(cell);
+        }
+
+        private void AddEdge(Cell neighbour_1, Cell neighbour_2)
         {
             neighbour_1.AddNeighbour(neighbour_2);
             neighbour_2.AddNeighbour(neighbour_1);
